@@ -1,27 +1,27 @@
 const artworks = [
   {
     title: "Tattoo 1",
-    image: "artwork/tattoo1.jpg"
+    image: "artwork/Angel Gone Nomad.jpg"
   },
   {
     title: "Tattoo 2",
-    image: "artwork/tattoo2.jpg"
+    image: "artwork/Humid Shower.jpg"
   },
   {
     title: "Tattoo 3",
-    image: "artwork/tattoo3.jpg"
+    image: "artwork/Mausoleum's Guest.jpg"
   },
   {
     title: "Tattoo 4",
-    image: "artwork/tattoo4.jpg"
+    image: "artwork/No Matches in the Abyss.jpg"
   },
   {
     title: "Tattoo 5",
-    image: "artwork/tattoo5.jpg"
+    image: "artwork/Renard.jpg"
   },
   {
     title: "Tattoo 6",
-    image: "artwork/tattoo6.jpg"
+    image: "artwork/Resting Cathedral.jpg"
   }
 ];
  
