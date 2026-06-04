@@ -141,7 +141,8 @@ function spin() {
   const finalX =
     windowWidth / 2 -
     landingIndex * cardStep -
-    cardWidth / 2 + 12;
+    cardWidth / 2 +
+    12;
 
   spinnerTrack.style.transition = "none";
   spinnerTrack.style.transform = `translateX(${startX}px)`;
