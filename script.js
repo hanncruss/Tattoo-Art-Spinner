@@ -138,7 +138,7 @@ function spin() {
   const landingIndex =
     landingLoop * artworks.length + originalIndex;
 
-  const centerAdjustment = cardWidth * 0.08;
+  const centerAdjustment = cardWidth * -0.04;
 
   const finalX =
     windowWidth / 2 -
