@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ 
+  <title>Tattoo Art Spinner</title>
+ 
+  <link rel="stylesheet" href="style.css" />
+</head>
+ 
+<body>
+  <main class="app">
+    <h1>Tattoo Art Spinner</h1>
+ 
+    <p class="subtitle">
+      Spin up to 3 times to reveal your mystery tattoo options.
+    </p>
+ 
+    <div class="spinner-window">
+      <div class="pointer"></div>
+      <div id="spinnerTrack" class="spinner-track"></div>
+    </div>
+ 
+    <button id="spinButton">Spin</button>
+ 
+    <p id="spinCount">Spins left: 3</p>
+ 
+    <section id="result" class="result hidden">
+      <h2>Your Selected Tattoos</h2>
+ 
+      <div id="selectedGallery" class="selected-gallery"></div>
+    </section>
+  </main>
+ 
+  <script src="script.js"></script>
+</body>
+</html>
