@@ -1,34 +1,13 @@
 const artworks = [
-  {
-    //title: "Tattoo 1",
-    image: "artwork/alien.jpeg"
-  },
-  {
-    //title: "Tattoo 2",
-    image: "artwork/angel-paw.jpeg"
-  },
-  {
-    //title: "Tattoo 3",
-    image: "artwork/angel.jpeg"
-  },
-  {
-    //title: "Tattoo 4",
-    image: "artwork/bandaid-with-heart.jpeg"
-  },
-  {
-   //title: "Tattoo 5",
-    image: "artwork/bandaid.jpeg"
-  },
-  {
-    //title: "Tattoo 6",
-    image: "artwork/barbed-heart.jpeg"
-  }
+  { image: "artwork/alien.jpeg" },
+  { image: "artwork/angel-paw.jpeg" },
+  { image: "artwork/angel.jpeg" },
+  { image: "artwork/bandaid-with-heart.jpeg" },
+  { image: "artwork/bandaid.jpeg" },
+  { image: "artwork/barbed-heart.jpeg" }
 
-  // Add the rest of your images here the same way:
-  // {
-  //   title: "Tattoo 7",
-  //   image: "artwork/your-file-name.jpeg"
-  // },
+  // Add the rest the same way:
+  // { image: "artwork/your-file-name.jpeg" },
 ];
 
 const spinnerTrack = document.getElementById("spinnerTrack");
@@ -59,16 +38,14 @@ function updateSpins() {
 function buildSpinner() {
   spinnerTrack.innerHTML = "";
 
-  for (let i = 0; i < 4; i++) {
+  for (let i = 0; i < 2; i++) {
     artworks.forEach((art) => {
       const card = document.createElement("div");
-
       card.className = "art-card";
 
       const img = document.createElement("img");
-
       img.src = art.image;
-      img.alt = art.title;
+      img.alt = "Tattoo design";
 
       card.appendChild(img);
       spinnerTrack.appendChild(card);
@@ -76,17 +53,34 @@ function buildSpinner() {
   }
 }
 
+function getCardStep() {
+  const firstCard = document.querySelector(".art-card");
+
+  if (!firstCard) return 240;
+
+  const cardStyle = window.getComputedStyle(firstCard);
+  const trackStyle = window.getComputedStyle(spinnerTrack);
+
+  const cardWidth = firstCard.offsetWidth;
+  const cardMarginLeft = parseFloat(cardStyle.marginLeft) || 0;
+  const cardMarginRight = parseFloat(cardStyle.marginRight) || 0;
+  const gap =
+    parseFloat(trackStyle.columnGap) ||
+    parseFloat(trackStyle.gap) ||
+    0;
+
+  return cardWidth + cardMarginLeft + cardMarginRight + gap;
+}
+
 function showSelectedTattoos() {
   selectedGallery.innerHTML = "";
 
   selectedTattoos.forEach((tattoo) => {
     const item = document.createElement("div");
-
     item.className = "selected-item";
 
     item.innerHTML = `
-      <img src="${tattoo.image}" alt="${tattoo.title}">
-      <p>${tattoo.title}</p>
+      <img src="${tattoo.image}" alt="Selected tattoo design">
     `;
 
     selectedGallery.appendChild(item);
@@ -105,7 +99,7 @@ function spin() {
   spinButton.disabled = true;
 
   const availableArtworks = artworks.filter((art) => {
-    return !selectedTattoos.some((selected) => selected.title === art.title);
+    return !selectedTattoos.some((selected) => selected.image === art.image);
   });
 
   if (availableArtworks.length === 0) {
@@ -118,24 +112,23 @@ function spin() {
   const selectedArtwork = availableArtworks[selectedIndex];
 
   const originalIndex = artworks.findIndex((art) => {
-    return art.title === selectedArtwork.title;
+    return art.image === selectedArtwork.image;
   });
 
-  const cardWidth = 170;
+  const cardStep = getCardStep();
 
-  const minimumFullLoops = 2;
+  const fullLoops = 5;
   const randomExtraCards = Math.floor(Math.random() * artworks.length);
 
   const spinDistance =
-    ((artworks.length * minimumFullLoops) + randomExtraCards + originalIndex) * cardWidth;
+    ((artworks.length * fullLoops) + randomExtraCards + originalIndex) * cardStep;
 
   currentPosition -= spinDistance;
 
   spinnerTrack.style.transition =
-    "transform 5.5s cubic-bezier(0.15, 0.85, 0.15, 1)";
+    "transform 6.5s cubic-bezier(0.12, 0.75, 0.2, 1)";
 
-  spinnerTrack.style.transform =
-    `translateX(${currentPosition}px)`;
+  spinnerTrack.style.transform = `translateX(${currentPosition}px)`;
 
   setTimeout(() => {
     spinsUsed++;
@@ -148,11 +141,11 @@ function spin() {
     showSelectedTattoos();
     updateSpins();
 
-    if (spinsUsed < 3 && availableArtworks.length > 1) {
+    if (spinsUsed < 3 && selectedTattoos.length < artworks.length) {
       spinButton.disabled = false;
       spinButton.innerText = "Spin";
     }
-  }, 5500);
+  }, 6500);
 }
 
 function resetSpinner() {
