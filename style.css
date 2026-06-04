@@ -2,56 +2,56 @@
   box-sizing: border-box;
 }
 
+html,
 body {
   margin: 0;
-  background: #050505;
+  min-height: 100%;
+  background: #000000;
   color: #ffffff;
   font-family: Arial, sans-serif;
   text-align: center;
+}
+
+body {
+  background: #000000;
 }
 
 .app {
   width: 100%;
   max-width: 900px;
   margin: 0 auto;
-  padding: 24px 14px 40px;
+  padding: 24px 12px 40px;
+  background: #000000;
 }
 
 h1 {
-  margin: 0 0 10px;
-  font-size: clamp(2rem, 8vw, 4rem);
   color: #ffffff;
   text-transform: uppercase;
-  letter-spacing: 2px;
 }
 
 .subtitle {
-  font-size: clamp(1rem, 4vw, 1.4rem);
-  color: #d8d8d8;
-  margin-bottom: 28px;
+  color: #dddddd;
 }
 
 .spinner-panel {
-  border: 2px solid #0fad31;
+  border: 2px solid #16b83e;
   border-radius: 18px;
-  padding: 14px;
-  box-shadow: 0 0 18px rgba(15, 173, 49, 0.55);
+  padding: 12px;
+  box-shadow: 0 0 18px rgba(22, 184, 62, 0.6);
 }
 
 .spinner-instruction {
-  margin: 0 0 12px;
-  font-size: 0.85rem;
   letter-spacing: 2px;
-  color: #ffffff;
+  font-weight: bold;
 }
 
 .spinner-window {
   position: relative;
   width: 100%;
   overflow: hidden;
-  border: 2px solid #0fad31;
-  border-radius: 14px;
-  background: #080808;
+  border: 2px solid #16b83e;
+  border-radius: 16px;
+  background: #050505;
   padding: 14px 0;
 }
 
@@ -61,23 +61,25 @@ h1 {
   bottom: 0;
   left: 50%;
   width: 3px;
-  background: #0fad31;
+  background: #16b83e;
   transform: translateX(-50%);
-  z-index: 5;
-  box-shadow: 0 0 10px #0fad31;
+  z-index: 10;
+  box-shadow: 0 0 12px #16b83e;
 }
 
 .spinner-track {
   display: flex;
   gap: 14px;
   align-items: center;
+  width: max-content;
   will-change: transform;
 }
 
 .art-card {
-  flex: 0 0 clamp(110px, 32vw, 190px);
-  height: clamp(110px, 32vw, 190px);
-  background: #f5f0e8;
+  flex: 0 0 160px;
+  width: 160px;
+  height: 160px;
+  background: #f4efe6;
   border: 2px solid #ffffff;
   border-radius: 14px;
   display: flex;
@@ -93,43 +95,41 @@ h1 {
 }
 
 button {
-  margin-top: 24px;
-  padding: 16px 28px;
-  border: none;
+  margin-top: 22px;
+  padding: 15px 28px;
+  border: 0;
   border-radius: 999px;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   font-weight: bold;
   cursor: pointer;
 }
 
 #spinButton {
-  background: #0fad31;
-  color: #050505;
-  box-shadow: 0 0 14px rgba(15, 173, 49, 0.7);
+  background: #16b83e;
+  color: #000000;
+  box-shadow: 0 0 14px rgba(22, 184, 62, 0.7);
 }
 
 #resetButton {
   background: #ffffff;
-  color: #050505;
+  color: #000000;
   margin-left: 10px;
 }
 
 button:disabled {
-  opacity: 0.45;
+  opacity: 0.5;
   cursor: not-allowed;
 }
 
 #spinCount {
-  margin-top: 18px;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
 }
 
 .result {
-  margin-top: 36px;
+  margin-top: 34px;
 }
 
 .result h2 {
-  color: #ffffff;
   text-transform: uppercase;
   letter-spacing: 2px;
 }
@@ -138,21 +138,20 @@ button:disabled {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 18px;
+  gap: 16px;
 }
 
 .selected-item {
-  width: min(85vw, 360px);
-  background: #f5f0e8;
-  border: 2px solid #0fad31;
+  width: min(85vw, 320px);
+  background: #f4efe6;
+  border: 2px solid #16b83e;
   border-radius: 16px;
-  padding: 18px;
-  box-shadow: 0 0 18px rgba(15, 173, 49, 0.45);
+  padding: 16px;
+  box-shadow: 0 0 18px rgba(22, 184, 62, 0.5);
 }
 
 .selected-item img {
   width: 100%;
-  height: auto;
   display: block;
   object-fit: contain;
 }
@@ -163,15 +162,17 @@ button:disabled {
 
 @media (max-width: 600px) {
   .app {
-    padding: 18px 10px 32px;
-  }
-
-  .spinner-panel {
-    padding: 10px;
+    padding: 18px 10px 34px;
   }
 
   .spinner-window {
-    padding: 12px 0;
+    padding: 10px 0;
+  }
+
+  .art-card {
+    flex-basis: 120px;
+    width: 120px;
+    height: 120px;
   }
 
   .spinner-track {
@@ -180,14 +181,10 @@ button:disabled {
 
   button {
     width: 100%;
-    margin-top: 16px;
+    margin-top: 14px;
   }
 
   #resetButton {
     margin-left: 0;
-  }
-
-  .selected-item {
-    width: 92vw;
   }
 }
