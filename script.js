@@ -138,13 +138,10 @@ function spin() {
   const landingIndex =
     landingLoop * artworks.length + originalIndex;
 
-  const centerAdjustment = cardWidth * 0.08;
-
   const finalX =
     windowWidth / 2 -
     landingIndex * cardStep -
-    cardWidth / 2 +
-    centerAdjustment;
+    cardWidth / 2 + 12;
 
   spinnerTrack.style.transition = "none";
   spinnerTrack.style.transform = `translateX(${startX}px)`;
