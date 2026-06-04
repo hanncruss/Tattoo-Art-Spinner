@@ -5,9 +5,6 @@ const artworks = [
   { image: "artwork/bandaid-with-heart.jpeg" },
   { image: "artwork/bandaid.jpeg" },
   { image: "artwork/barbed-heart.jpeg" }
-
-  // Add the rest the same way:
-  // { image: "artwork/your-file-name.jpeg" },
 ];
 
 const spinnerTrack = document.getElementById("spinnerTrack");
@@ -20,6 +17,9 @@ const selectedGallery = document.getElementById("selectedGallery");
 let spinsUsed = Number(sessionStorage.getItem("spinsUsed")) || 0;
 let selectedTattoos = JSON.parse(sessionStorage.getItem("selectedTattoos")) || [];
 let currentPosition = 0;
+
+const repeatCount = 12;
+const spinTime = 6500;
 
 function updateSpins() {
   const left = 3 - spinsUsed;
@@ -38,10 +38,11 @@ function updateSpins() {
 function buildSpinner() {
   spinnerTrack.innerHTML = "";
 
-  for (let i = 0; i < 2; i++) {
+  for (let i = 0; i < repeatCount; i++) {
     artworks.forEach((art) => {
       const card = document.createElement("div");
       card.className = "art-card";
+      card.dataset.image = art.image;
 
       const img = document.createElement("img");
       img.src = art.image;
@@ -55,21 +56,21 @@ function buildSpinner() {
 
 function getCardStep() {
   const firstCard = document.querySelector(".art-card");
-
-  if (!firstCard) return 240;
-
-  const cardStyle = window.getComputedStyle(firstCard);
   const trackStyle = window.getComputedStyle(spinnerTrack);
 
-  const cardWidth = firstCard.offsetWidth;
-  const cardMarginLeft = parseFloat(cardStyle.marginLeft) || 0;
-  const cardMarginRight = parseFloat(cardStyle.marginRight) || 0;
   const gap =
     parseFloat(trackStyle.columnGap) ||
     parseFloat(trackStyle.gap) ||
     0;
 
-  return cardWidth + cardMarginLeft + cardMarginRight + gap;
+  return firstCard.offsetWidth + gap;
+}
+
+function getWindowCenter() {
+  const windowRect = document.querySelector(".spinner-window").getBoundingClientRect();
+  const trackRect = spinnerTrack.getBoundingClientRect();
+
+  return windowRect.left + windowRect.width / 2 - trackRect.left;
 }
 
 function showSelectedTattoos() {
@@ -108,25 +109,29 @@ function spin() {
     return;
   }
 
-  const selectedIndex = Math.floor(Math.random() * availableArtworks.length);
-  const selectedArtwork = availableArtworks[selectedIndex];
+  const selectedArtwork =
+    availableArtworks[Math.floor(Math.random() * availableArtworks.length)];
 
   const originalIndex = artworks.findIndex((art) => {
     return art.image === selectedArtwork.image;
   });
 
   const cardStep = getCardStep();
+  const cardWidth = document.querySelector(".art-card").offsetWidth;
+  const windowWidth = document.querySelector(".spinner-window").offsetWidth;
 
-  const fullLoops = 5;
-  const randomExtraCards = Math.floor(Math.random() * artworks.length);
+  const landingLoop = repeatCount - 3;
+  const landingIndex = landingLoop * artworks.length + originalIndex;
 
-  const spinDistance =
-    ((artworks.length * fullLoops) + randomExtraCards + originalIndex) * cardStep;
+  const finalX =
+    windowWidth / 2 -
+    landingIndex * cardStep -
+    cardWidth / 2;
 
-  currentPosition -= spinDistance;
+  currentPosition = finalX;
 
   spinnerTrack.style.transition =
-    "transform 6.5s cubic-bezier(0.12, 0.75, 0.2, 1)";
+    `transform ${spinTime}ms cubic-bezier(0.12, 0.75, 0.2, 1)`;
 
   spinnerTrack.style.transform = `translateX(${currentPosition}px)`;
 
@@ -145,7 +150,7 @@ function spin() {
       spinButton.disabled = false;
       spinButton.innerText = "Spin";
     }
-  }, 6500);
+  }, spinTime);
 }
 
 function resetSpinner() {
