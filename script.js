@@ -33,6 +33,7 @@ const artworks = [
 
 const spinnerTrack = document.getElementById("spinnerTrack");
 const spinButton = document.getElementById("spinButton");
+const resetButton = document.getElementById("resetButton");
 const spinCount = document.getElementById("spinCount");
 const result = document.getElementById("result");
 const selectedGallery = document.getElementById("selectedGallery");
@@ -154,8 +155,29 @@ function spin() {
   }, 5500);
 }
 
+function resetSpinner() {
+  sessionStorage.removeItem("spinsUsed");
+  sessionStorage.removeItem("selectedTattoos");
+
+  spinsUsed = 0;
+  selectedTattoos = [];
+  currentPosition = 0;
+
+  spinnerTrack.style.transition = "none";
+  spinnerTrack.style.transform = "translateX(0px)";
+
+  selectedGallery.innerHTML = "";
+  result.classList.add("hidden");
+
+  spinButton.disabled = false;
+  spinButton.innerText = "Spin";
+
+  updateSpins();
+}
+
 buildSpinner();
 showSelectedTattoos();
 updateSpins();
 
 spinButton.addEventListener("click", spin);
+resetButton.addEventListener("click", resetSpinner);
