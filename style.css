@@ -1,118 +1,193 @@
 * {
   box-sizing: border-box;
 }
- 
+
 body {
   margin: 0;
-  background: #111;
-  color: white;
+  background: #050505;
+  color: #ffffff;
   font-family: Arial, sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-}
- 
-.app {
-  width: 90%;
-  max-width: 900px;
   text-align: center;
 }
- 
+
+.app {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 24px 14px 40px;
+}
+
 h1 {
-  font-size: 42px;
-  margin-bottom: 10px;
+  margin: 0 0 10px;
+  font-size: clamp(2rem, 8vw, 4rem);
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
- 
+
 .subtitle {
-  font-size: 18px;
-  opacity: 0.85;
+  font-size: clamp(1rem, 4vw, 1.4rem);
+  color: #d8d8d8;
+  margin-bottom: 28px;
 }
- 
+
+.spinner-panel {
+  border: 2px solid #0fad31;
+  border-radius: 18px;
+  padding: 14px;
+  box-shadow: 0 0 18px rgba(15, 173, 49, 0.55);
+}
+
+.spinner-instruction {
+  margin: 0 0 12px;
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  color: #ffffff;
+}
+
 .spinner-window {
   position: relative;
-  overflow: hidden;
-  border: 3px solid white;
-  border-radius: 20px;
-  height: 200px;
-  margin-top: 30px;
-  background: #1c1c1c;
-}
- 
-.spinner-track {
-  display: flex;
-  gap: 20px;
-  padding: 20px;
-  transition: transform 4s ease-out;
-}
- 
-.art-card {
-  flex: 0 0 150px;
-  height: 150px;
-  border-radius: 16px;
-  overflow: hidden;
-  background: #333;
-}
- 
-.art-card img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  overflow: hidden;
+  border: 2px solid #0fad31;
+  border-radius: 14px;
+  background: #080808;
+  padding: 14px 0;
 }
- 
+
 .pointer {
   position: absolute;
+  top: 0;
+  bottom: 0;
   left: 50%;
-  width: 4px;
-  height: 100%;
-  background: gold;
+  width: 3px;
+  background: #0fad31;
   transform: translateX(-50%);
-  z-index: 10;
+  z-index: 5;
+  box-shadow: 0 0 10px #0fad31;
 }
- 
+
+.spinner-track {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  will-change: transform;
+}
+
+.art-card {
+  flex: 0 0 clamp(110px, 32vw, 190px);
+  height: clamp(110px, 32vw, 190px);
+  background: #f5f0e8;
+  border: 2px solid #ffffff;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.art-card img {
+  width: 85%;
+  height: 85%;
+  object-fit: contain;
+}
+
 button {
-  margin-top: 30px;
-  padding: 15px 40px;
+  margin-top: 24px;
+  padding: 16px 28px;
   border: none;
   border-radius: 999px;
-  background: gold;
-  color: black;
-  font-size: 18px;
+  font-size: 1.1rem;
   font-weight: bold;
   cursor: pointer;
 }
- 
+
+#spinButton {
+  background: #0fad31;
+  color: #050505;
+  box-shadow: 0 0 14px rgba(15, 173, 49, 0.7);
+}
+
+#resetButton {
+  background: #ffffff;
+  color: #050505;
+  margin-left: 10px;
+}
+
 button:disabled {
-  opacity: 0.5;
+  opacity: 0.45;
   cursor: not-allowed;
 }
- 
-.result {
-  margin-top: 35px;
+
+#spinCount {
+  margin-top: 18px;
+  font-size: 1.2rem;
 }
- 
+
+.result {
+  margin-top: 36px;
+}
+
+.result h2 {
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
 .selected-gallery {
   display: flex;
   justify-content: center;
-  gap: 20px;
   flex-wrap: wrap;
-  margin-top: 20px;
+  gap: 18px;
 }
- 
+
 .selected-item {
-  width: 180px;
+  width: min(85vw, 360px);
+  background: #f5f0e8;
+  border: 2px solid #0fad31;
+  border-radius: 16px;
+  padding: 18px;
+  box-shadow: 0 0 18px rgba(15, 173, 49, 0.45);
 }
- 
+
 .selected-item img {
   width: 100%;
-  border-radius: 16px;
-  border: 2px solid white;
+  height: auto;
+  display: block;
+  object-fit: contain;
 }
- 
-.selected-item p {
-  margin-top: 10px;
-}
- 
+
 .hidden {
   display: none;
+}
+
+@media (max-width: 600px) {
+  .app {
+    padding: 18px 10px 32px;
+  }
+
+  .spinner-panel {
+    padding: 10px;
+  }
+
+  .spinner-window {
+    padding: 12px 0;
+  }
+
+  .spinner-track {
+    gap: 10px;
+  }
+
+  button {
+    width: 100%;
+    margin-top: 16px;
+  }
+
+  #resetButton {
+    margin-left: 0;
+  }
+
+  .selected-item {
+    width: 92vw;
+  }
 }
