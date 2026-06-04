@@ -1,40 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Tattoo Art Spinner</title>
+  <title>Daddy Jacks Tattoos - Get What You Get</title>
 
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
   <main class="app">
-    <h1>Tattoo Art Spinner</h1>
+
+    <h1>Daddy Jacks Tattoos</h1>
 
     <p class="subtitle">
-      Spin up to 3 times to reveal your mystery tattoo options.
+      Get What You Get
     </p>
 
-    <div class="spinner-window">
-      <div class="pointer"></div>
-      <div id="spinnerTrack" class="spinner-track"></div>
+    <div class="spinner-panel">
+
+      <p class="spinner-instruction">
+        SPIN • REVEAL • GET WHAT YOU GET
+      </p>
+
+      <div class="spinner-window">
+        <div class="pointer"></div>
+        <div id="spinnerTrack" class="spinner-track"></div>
+      </div>
+
     </div>
 
     <button id="spinButton">Spin</button>
-    <button id="resetButton">Reset Spinner</button>
 
-    <p id="spinCount">Spins left: 3</p>
+    <button id="resetButton">
+      Reset Spinner
+    </button>
+
+    <p id="spinCount">
+      Spins left: 3
+    </p>
 
     <section id="result" class="result hidden">
-      <h2>Your Selected Tattoos</h2>
+
+      <h2>Your Tattoo Is...</h2>
 
       <div id="selectedGallery" class="selected-gallery"></div>
+
     </section>
+
+    <div class="rules-section">
+
+      <h3>Rules</h3>
+
+      <ul>
+        <li>18+ Only</li>
+        <li>Valid ID may be required</li>
+        <li>3 re-dos maximum</li>
+        <li>Small tattoo designs only</li>
+        <li>Placement at artist discretion</li>
+      </ul>
+
+    </div>
+
   </main>
 
   <script src="script.js"></script>
 </body>
-</html></body>
 </html>
