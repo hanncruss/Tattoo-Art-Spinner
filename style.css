@@ -5,44 +5,47 @@
 html,
 body {
   margin: 0;
+  width: 100%;
   min-height: 100%;
   background: #000000;
   color: #ffffff;
+  overflow-x: hidden;
+}
+
+body {
   font-family: Arial, sans-serif;
   text-align: center;
 }
 
-body {
-  background: #000000;
-}
-
 .app {
   width: 100%;
-  max-width: 900px;
+  max-width: 480px;
   margin: 0 auto;
-  padding: 24px 12px 40px;
+  padding: 20px 12px 40px;
   background: #000000;
 }
 
-h1 {
-  color: #ffffff;
-  text-transform: uppercase;
-}
-
-.subtitle {
-  color: #dddddd;
+.logo {
+  width: min(90vw, 420px);
+  display: block;
+  margin: 20px auto 28px;
 }
 
 .spinner-panel {
   border: 2px solid #16b83e;
-  border-radius: 18px;
-  padding: 12px;
-  box-shadow: 0 0 18px rgba(22, 184, 62, 0.6);
+  border-radius: 22px;
+  padding: 14px;
+  box-shadow: 0 0 24px rgba(22, 184, 62, 0.65);
 }
 
 .spinner-instruction {
-  letter-spacing: 2px;
-  font-weight: bold;
+  margin: 8px 0 18px;
+  color: #ffffff;
+  white-space: nowrap;
+  font-size: clamp(0.68rem, 3.1vw, 1.15rem);
+  letter-spacing: clamp(1px, 0.8vw, 5px);
+  font-weight: 900;
+  text-align: center;
 }
 
 .spinner-window {
@@ -50,9 +53,9 @@ h1 {
   width: 100%;
   overflow: hidden;
   border: 2px solid #16b83e;
-  border-radius: 16px;
+  border-radius: 18px;
   background: #050505;
-  padding: 14px 0;
+  padding: 12px 0;
 }
 
 .pointer {
@@ -64,21 +67,24 @@ h1 {
   background: #16b83e;
   transform: translateX(-50%);
   z-index: 10;
-  box-shadow: 0 0 12px #16b83e;
+  box-shadow: 0 0 18px #16b83e;
 }
 
 .spinner-track {
   display: flex;
-  gap: 14px;
+  gap: 10px;
   align-items: center;
   width: max-content;
+  transform: translateX(0);
   will-change: transform;
 }
 
 .art-card {
-  flex: 0 0 160px;
-  width: 160px;
-  height: 160px;
+  flex: 0 0 calc((100vw - 64px) / 3);
+  width: calc((100vw - 64px) / 3);
+  max-width: 135px;
+  height: calc((100vw - 64px) / 3);
+  max-height: 135px;
   background: #f4efe6;
   border: 2px solid #ffffff;
   border-radius: 14px;
@@ -95,43 +101,41 @@ h1 {
 }
 
 button {
-  margin-top: 22px;
-  padding: 15px 28px;
-  border: 0;
+  width: 100%;
+  margin-top: 24px;
+  padding: 16px;
+  border: none;
   border-radius: 999px;
-  font-size: 1.05rem;
-  font-weight: bold;
+  font-size: 1.15rem;
+  font-weight: 900;
   cursor: pointer;
 }
 
 #spinButton {
   background: #16b83e;
   color: #000000;
-  box-shadow: 0 0 14px rgba(22, 184, 62, 0.7);
-}
-
-#resetButton {
-  background: #ffffff;
-  color: #000000;
-  margin-left: 10px;
+  box-shadow: 0 0 18px rgba(22, 184, 62, 0.75);
 }
 
 button:disabled {
-  opacity: 0.5;
+  opacity: 0.55;
   cursor: not-allowed;
 }
 
 #spinCount {
-  font-size: 1.1rem;
+  margin-top: 18px;
+  font-size: 1.15rem;
 }
 
 .result {
-  margin-top: 34px;
+  margin-top: 38px;
 }
 
 .result h2 {
+  color: #ffffff;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 4px;
+  font-size: clamp(1.6rem, 8vw, 2.5rem);
 }
 
 .selected-gallery {
@@ -142,49 +146,23 @@ button:disabled {
 }
 
 .selected-item {
-  width: min(85vw, 320px);
+  width: 90vw;
+  max-width: 320px;
+  margin: 0 auto;
   background: #f4efe6;
   border: 2px solid #16b83e;
-  border-radius: 16px;
+  border-radius: 18px;
   padding: 16px;
-  box-shadow: 0 0 18px rgba(22, 184, 62, 0.5);
+  box-shadow: 0 0 22px rgba(22, 184, 62, 0.6);
 }
 
 .selected-item img {
   width: 100%;
+  height: auto;
   display: block;
   object-fit: contain;
 }
 
 .hidden {
   display: none;
-}
-
-@media (max-width: 600px) {
-  .app {
-    padding: 18px 10px 34px;
-  }
-
-  .spinner-window {
-    padding: 10px 0;
-  }
-
-  .art-card {
-    flex-basis: 120px;
-    width: 120px;
-    height: 120px;
-  }
-
-  .spinner-track {
-    gap: 10px;
-  }
-
-  button {
-    width: 100%;
-    margin-top: 14px;
-  }
-
-  #resetButton {
-    margin-left: 0;
-  }
 }
