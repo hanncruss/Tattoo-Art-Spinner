@@ -1,7 +1,7 @@
 const artworks = [
   {
     title: "Tattoo 1",
-    image: "artwork/angel-gone-nomad.jpeg"
+    image: "artwork/angel.png"
   },
   {
     title: "Tattoo 2",
