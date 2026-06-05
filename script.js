@@ -53,7 +53,7 @@ const artworks = [
   { image: "artwork/triangles.jpeg },
   { image: "artwork/weed.jpeg },
   { image: "artwork/window.jpeg },
-  { image: "artwork/ying-yang.jpeg },
+  { image: "artwork/ying-yang.jpeg }
 ];
 
 const spinnerTrack = document.getElementById("spinnerTrack");
