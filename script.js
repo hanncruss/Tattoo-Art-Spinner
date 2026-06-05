@@ -4,7 +4,56 @@ const artworks = [
   { image: "artwork/angel.jpeg" },
   { image: "artwork/bandaid-with-heart.jpeg" },
   { image: "artwork/bandaid.jpeg" },
-  { image: "artwork/barbed-heart.jpeg" }
+  { image: "artwork/barbed-heart.jpeg" },
+  { image: "artwork/bomb.jpeg },
+  { image: "artwork/brain.jpeg },
+  { image: "artwork/butterfly.jpeg },
+  { image: "artwork/candle.jpeg },
+  { image: "artwork/chakra.jpeg },
+  { image: "artwork/clover.jpeg },
+  { image: "artwork/cross.jpeg },
+  { image: "artwork/crying-heart.jpeg },
+  { image: "artwork/crystal-ball.jpeg },
+  { image: "artwork/dagger-heart.jpeg },
+  { image: "artwork/daisy.jpeg },
+  { image: "artwork/dead-smile.jpeg },
+  { image: "artwork/diamond.jpeg },
+  { image: "artwork/dripping-smiley.jpeg },
+  { image: "artwork/flame.jpeg },
+  { image: "artwork/flaming-aces.jpeg },
+  { image: "artwork/flower-bandaid.jpeg },
+  { image: "artwork/flying-money.jpeg },
+  { image: "artwork/ghost.jpeg },
+  { image: "artwork/grim-reaper.jpeg },
+  { image: "artwork/heart-eye.jpeg },
+  { image: "artwork/hello-kitty.jpeg },
+  { image: "artwork/hip-ghost.jpeg },
+  { image: "artwork/horseshoe.jpeg },
+  { image: "artwork/infinity.jpeg },
+  { image: "artwork/lightning.jpeg },
+  { image: "artwork/low-battery.jpeg },
+  { image: "artwork/mickey-flip.jpeg },
+  { image: "artwork/money.jpeg },
+  { image: "artwork/mountain.jpeg },
+  { image: "artwork/pizza.jpeg },
+  { image: "artwork/playboy.jpeg },
+  { image: "artwork/relax.jpeg },
+  { image: "artwork/rose.jpeg },
+  { image: "artwork/scorpion.jpeg },
+  { image: "artwork/scream.jpeg },
+  { image: "artwork/ski-mask.jpeg },
+  { image: "artwork/snake.jpeg },
+  { image: "artwork/sparkle-lightning.jpeg },
+  { image: "artwork/spider.jpeg },
+  { image: "artwork/stemmed-rose.jpeg },
+  { image: "artwork/storm.jpeg },
+  { image: "artwork/sun.jpeg },
+  { image: "artwork/theater-masks.jpeg },
+  { image: "artwork/thinking-angel.jpeg },
+  { image: "artwork/triangles.jpeg },
+  { image: "artwork/weed.jpeg },
+  { image: "artwork/window.jpeg },
+  { image: "artwork/ying-yang.jpeg },
 ];
 
 const spinnerTrack = document.getElementById("spinnerTrack");
@@ -19,7 +68,7 @@ let spinsUsed =
 let selectedTattoos =
   JSON.parse(sessionStorage.getItem("selectedTattoos")) || [];
 
-const repeatCount = 20;
+const repeatCount = 8;
 const spinTime = 6500;
 
 function updateSpins() {
@@ -103,8 +152,8 @@ function spin() {
     return art.image === selectedArtwork.image;
   });
 
-  const startLoop = 3;
-  const landingLoop = 15;
+  const startLoop = 1;
+  const landingLoop = repeatCount - 2;
 
   const allCards = document.querySelectorAll(".art-card");
 
